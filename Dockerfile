@@ -7,4 +7,8 @@ RUN /usr/local/bin/gem install fluent-plugin-elasticsearch
 RUN /usr/local/bin/gem install fluent-plugin-amqp -v 0.7.1
 RUN /usr/local/bin/gem install fluent-plugin-record-modifier
 ADD fluent.conf /etc/fluent/
+
+RUN mkdir /source/
+COPY * /source/
+
 ENTRYPOINT ["/usr/local/bundle/bin/fluentd", "-c", "/etc/fluent/fluent.conf"]
